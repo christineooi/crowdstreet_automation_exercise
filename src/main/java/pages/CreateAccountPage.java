@@ -30,7 +30,6 @@ public class CreateAccountPage extends BasePage {
     }
 
     public void clickCreateAnAccountButtonInNavBar(){
-        System.out.println("in clickCreateAnAccountButtonInNavBar");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(createAccountButtonInNavBar)).click();
     }
@@ -61,7 +60,7 @@ public class CreateAccountPage extends BasePage {
         wait2.until(ExpectedConditions.elementToBeClickable(createAnAccountSubmitButton)).click();
     }
 
-    public boolean signOutButtonIsVisible(){    
+    public boolean signOutButtonIsVisible(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(signOutButton));
         return driver.findElement(signOutButton).isDisplayed();
