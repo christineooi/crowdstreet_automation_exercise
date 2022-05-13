@@ -1,5 +1,6 @@
 package tests;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 import pages.CreateAccountPage;
 
@@ -10,7 +11,11 @@ public class RegisterTests extends BeforeAfterTests {
     public void registerTest(){
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
         createAccountPage.clickCreateAnAccountButtonInNavBar();
-        createAccountPage.validRegistration(reader.getRegisterFirstName(), reader.getRegisterLastName(), reader.getRegisterEmail(), reader.getRegisterPassword(), reader.getRegisterIsAccredited());
+        String generatedStr = RandomStringUtils.randomAlphabetic(8);
+        String emailAddress = generatedStr + "@test.com";
+        String firstName = generatedStr + "_" + reader.getRegisterFirstName();
+        String lastName = generatedStr + "_" + reader.getRegisterLastName();
+        createAccountPage.validRegistration(firstName, lastName, emailAddress, reader.getRegisterPassword(), reader.getRegisterIsAccredited());
         assertTrue(createAccountPage.signOutButtonIsVisible());
     }
 }
